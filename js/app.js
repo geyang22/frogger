@@ -47,15 +47,13 @@ class Player {
     // Winning
     if (this.y < 40) {
       // Winning popup
-      const victory = document.getElementsByClassName('victory')[0];
       victory.style.display = "block";
-      const defeat = document.getElementsByClassName('defeat')[0];
       defeat.style.display = "none";
       openWindow();
-      console.log("won!!!");
+      // console.log("won!!!");
       //Resetting the player's position
       this.x = 400;
-      this.y = 400
+      this.y = 400;
       setTimeout(function() {
         popup.style.display = "none";
       }, 1000);
@@ -129,6 +127,8 @@ const player = new Player(400, 400);
 
 // Function to render popup window in case of a victory or a defeat
 const popup = document.getElementsByClassName('popup')[0];
+const defeat = document.getElementsByClassName('defeat')[0];
+const victory = document.getElementsByClassName('victory')[0];
 
 function openWindow() {
   popup.style.display = "block";
@@ -139,7 +139,16 @@ function checkCollisions() {
   allEnemies.forEach(function(enemy) {
     const obstacle = enemy;
     if (player.crash(obstacle)) {
+      // Reset the window content to read "You lost"
+      defeat.style.display = "block";
+      victory.style.display = "none";
       openWindow();
+      // Reset player's position when lost
+      player.x = 400;
+      player.y = 400
+      setTimeout(function() {
+        popup.style.display = "none";
+      }, 1000);
       // console.log("Game over")
     }
   });
