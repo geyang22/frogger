@@ -127,7 +127,7 @@ CreateEnemies();
 const player = new Player(400, 400);
 
 
-// Function to render popup window in case victory or defeat
+// Function to render popup window in case of a victory or a defeat
 const popup = document.getElementsByClassName('popup')[0];
 
 function openWindow() {
