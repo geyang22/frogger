@@ -1,4 +1,4 @@
-// 'use strict'
+'use strict';
 // Enemies our player must avoid
 class Enemy {
   // Variables applied to each of our instances go here,
@@ -33,7 +33,7 @@ class Enemy {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 
-};
+}
 
 // Now write your own player class
 class Player {
@@ -57,7 +57,7 @@ class Player {
     const playerTop = this.y + 50;
     const playerBottom = this.y + 100;
     const objectLeft = object.x;
-    const objectRight = object.x+65;
+    const objectRight = object.x + 65;
     const objectTop = object.y + 50;
     const objectBottom = object.y + 100;
     let collision = true;
@@ -85,22 +85,22 @@ class Player {
     } else if (direction === 'down' && this.y < 400) {
       this.y += 90;
     }
-  // Winning
-  if (this.y < 40) {
-    // Winning popup
-    victory.style.display = "block";
-    defeat.style.display = "none";
-    openWindow();
-    // console.log("won!!!");
-    //Resetting the player's position
-    this.x = 400;
-    this.y = 400;
-    setTimeout(function() {
-      popup.style.display = "none";
-    }, 1000);
+    // Winning
+    if (this.y < 40) {
+      // Winning popup
+      victory.style.display = "block";
+      defeat.style.display = "none";
+      openWindow();
+      // console.log("won!!!");
+      //Resetting the player's position
+      this.x = 400;
+      this.y = 400;
+      setTimeout(function() {
+        popup.style.display = "none";
+      }, 1000);
+    }
   }
 }
-};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
@@ -112,16 +112,17 @@ const allEnemies = [];
 // allEnemies.push(enemy3);
 
 // A function to create the enemies
-function CreateEnemies() {
-  this.y = 60;
+function createEnemies() {
+  let position = 60;
+  let i = 0;
   for (i = 0; i < 3; i++) {
-    const enemy = new Enemy(30, this.y, this.speed);
+    const enemy = new Enemy(30, position, 5);
     allEnemies.push(enemy);
-    this.y += 80;
+    position += 80;
   }
   return allEnemies;
 }
-CreateEnemies();
+createEnemies();
 
 
 // Place the player object in a variable called player
@@ -148,7 +149,7 @@ function checkCollisions() {
       openWindow();
       // Reset player's position when lost
       player.x = 400;
-      player.y = 400
+      player.y = 400;
       setTimeout(function() {
         popup.style.display = "none";
       }, 1000);
