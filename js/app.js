@@ -1,3 +1,4 @@
+// 'use strict'
 // Enemies our player must avoid
 class Enemy {
   // Variables applied to each of our instances go here,
@@ -9,6 +10,7 @@ class Enemy {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
+    this.speed = 100 + Math.floor(Math.random() * 111);
   }
 
   // Update the enemy's position, required method for game
@@ -112,7 +114,7 @@ const allEnemies = [];
 function CreateEnemies() {
   this.y = 60;
   for (i = 0; i < 3; i++) {
-    const enemy = new Enemy(30, this.y, 5);
+    const enemy = new Enemy(30, this.y, this.speed);
     allEnemies.push(enemy);
     this.y += 80;
   }
