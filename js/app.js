@@ -57,7 +57,7 @@ class Player {
     const playerTop = this.y + 50;
     const playerBottom = this.y + 100;
     const objectLeft = object.x;
-    const objectRight = object.x + 35;
+    const objectRight = object.x+65;
     const objectTop = object.y + 50;
     const objectBottom = object.y + 100;
     let collision = true;
